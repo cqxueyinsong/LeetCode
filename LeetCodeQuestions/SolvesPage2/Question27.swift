@@ -7,19 +7,22 @@
 
 import Foundation
 //class Solution: Testable {
-//    func test() -> Any? {
-//        reverse(33312111)
-//    }
-//    
-//    func reverse(_ x: Int) -> Int {
-//        var result = 0
-//        var tempX = x
-//        while tempX != 0 {
-//            result = result * 10 + tempX % 10
-//            tempX = (tempX - (tempX % 10)) / 10
+//        func test() -> Any? {
+//            var a = [1, 1, 2, 2, 3, 4]
+//            let value = removeElement(&a, 2)
+//            print(a)
+//            return value
 //        }
-//        result = result > 2147483647 ? 0 : result
-//        result = result < -2147483648 ? 0 : result
-//        return result
-//    }
+//    
+//    func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
+//            guard !nums.isEmpty else { return nums.count }
+//            var insert = 0
+//            for i in 0..<nums.count {
+//                if nums[i] != val {
+//                    nums[insert] = nums[i]
+//                    insert += 1
+//                }
+//            }
+//            return insert
+//        }
 //}

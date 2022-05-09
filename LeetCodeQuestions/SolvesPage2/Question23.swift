@@ -8,63 +8,37 @@
 import Foundation
 
 //class Solution: Testable {
-//    // 这个方法对于字符串操作太啰嗦
-//    // func lengthOfLongestSubstring(_ s: String) -> Int {
-//    //     guard !s.isEmpty else { return 0 }
-//    //     var searchRange = 0
-//    //     var result = 0
-//    //     var substring: String = ""
-//    //     var map: [String.Element: Int] = [:]
+//    
+//    func mergeKLists(_ lists: [ListNode?]) -> ListNode? {
+//        var rest = lists.compactMap { $0 }
+//        let minNode = rest.min { $0.val < $1.val }
+//        guard let minIndex = rest.firstIndex(where: { $0 === minNode }) else { return nil }
+//        var tail = minNode
 //        
-//    //     var index = 0
-//        
-//    //     while index != s.count {
-//    //         let stringIndex =  s.index(s.startIndex, offsetBy: index)
-//    //         let current = s[stringIndex]
-//    //         if substring.contains(current) {
-//    //             result = max(result, searchRange)
-//    //             if let beginNum = map[current], beginNum < s.count {
-//    //                 let begin = s.index(s.startIndex, offsetBy: beginNum)
-//    //                 let end = s.index(s.startIndex, offsetBy: index)
-//    //                 substring = String(s[begin...end])
-//    //                 searchRange = substring.count
-//    //                 index += 1
-//    //                 map[current] = index
-//    //             }
-//    //         } else {
-//    //             searchRange += 1
-//    //             result = max(result, searchRange)
-//    //             substring = substring + String(current)
-//    //             map[current] = index + 1
-//    //             index += 1
-//    //         }
-//    //         print(substring)
-//    //     }
-//    //     return result
-//    // }
-//
-//    func lengthOfLongestSubstring(_ s: String) -> Int {
-//        /**
-//         遍历字符串 如果当前字符出现过 就更新字符串长度begin 并记录当前最长的字符数 并记录当前字符位置到hashmap里
-//         **/
-//        guard s.count >= 2 else { return s.count }
-//        var map: [String.Element: Int] = [:]
-//        var result = 0
-//        var begin = 0
-//        let chars = Array(s)
-//        
-//        for i in 0..<chars.count { // 遍历字符串
-//            let currentChar = chars[i]
-//            if let preIndex = map[currentChar] { // 如果当前字符出现过
-//                begin = max(preIndex, begin) // 用begin 记录新的不重复的字符串的开始
-//            }
-//            result = max(i - begin + 1, result) // 将结果与历史记录比较，记录当前最长的字符数
-//            map[currentChar] = i + 1 // 记录当前字符位置到hashmap里
+//        if let aNode = rest[minIndex].next { // 找到最小节点的链表 移除最小节点 并判断是否为空 如果为空从rest 移除
+//            rest[minIndex] = aNode
+//        } else {
+//            rest.remove(at: minIndex)
 //        }
-//        return result == 0 ? s.count : result // 如果整穿都不重复，result为0
+//        
+//        while rest.count > 1{
+//            let minNode = rest.min { $0.val < $1.val }
+//            tail?.next = minNode
+//            tail = minNode
+//            let minIndex = rest.firstIndex(where: { $0 === minNode })
+//            if minNode!.next != nil {
+//                rest[minIndex!] = minNode!.next!
+//            } else {
+//                rest.remove(at: minIndex!)
+//            }
+//        }
+//        tail?.next = rest.first
+//        return minNode
 //    }
 //    
 //    func test() -> Any? {
-//        lengthOfLongestSubstring("bbb")
+//        mergeKLists([.makeNode(array: [1, 4, 5]),
+//                     .makeNode(array: [1, 3, 4]),
+//                     .makeNode(array: [2, 6])])?.foreach
 //    }
 //}

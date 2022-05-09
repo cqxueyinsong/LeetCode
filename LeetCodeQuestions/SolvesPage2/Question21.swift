@@ -13,20 +13,35 @@ import Foundation
 //
 //你可以按任意顺序返回答案。
 
-class Solution: Testable {
-    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-       var map: [Int: Int] = [:]
-       for index in 0..<nums.count {
-           let num = nums[index]
-           if let another = map[num] {
-               return [index, another]
-           }
-           map[target - num] = index
-       }
-       return []
-    }
-
-    func test() -> Any? {
-        return twoSum([2,7,11,15], 9)
-    }
-}
+//class Solution: Testable {
+//
+//    func test() -> Any? {
+//        return mergeTwoLists(.makeNode(array: [1,2,4]), .makeNode(array: [1,3,4]))?.foreach
+//    }
+//    
+//    func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
+//            guard list1 != nil else { return list2 }
+//            guard list2 != nil else { return list1 }
+//            let result = list1!.val < list2!.val ? list1 : list2 // 取到最小节点
+//            var resultLast = result // result 尾部节点
+//            var list1 = result === list1 ? list1?.next : list1
+//            var list2 = result === list2 ? list2?.next : list2
+//            while list1 != nil && list2 != nil {
+//                if list1!.val < list2!.val {
+//                    resultLast?.next = list1
+//                    list1 = list1?.next
+//                    resultLast = resultLast?.next
+//                } else {
+//                    resultLast?.next = list2
+//                    list2 = list2?.next
+//                    resultLast = resultLast?.next
+//                }
+//            }
+//            if list1 == nil {
+//                resultLast?.next = list2
+//            } else {
+//                resultLast?.next = list1
+//            }
+//            return result
+//        }
+//}

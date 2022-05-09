@@ -9,52 +9,34 @@ import Foundation
 
 //class Solution: Testable {
 //    
-//    func longestPalindrome(_ s: String) -> String {
-//        guard s.count > 1 else { return s }
-//        let array = s.map { String($0) }
-//        var max: (bengin: Int, length: Int) = (0, 0)
-//        for index in (0..<s.count - 1) {
-//            if let odd = array.expensAround(left: index, right: index), max.length < odd.1 {
-//                max = odd
-//            }
-//            if let even = array.expensAround(left: index, right: index + 1), max.length < even.1 {
-//                max = even
-//            }
-//        }
-//        return array.string(begin: max.bengin, offSet: max.length)
-//    }
-//    
 //    func test() -> Any? {
-//        longestPalindrome("babad")
+//        reverseKGroup(.makeNode(array: [1,2,3,4,5]), 3)?.foreach
 //    }
-//}
-//
-//extension Array where Element == String {
-//    func expensAround(left: Int, right: Int) -> (Int, Int)? { // 以left和right为中心扩散 比较当前array对应的字符串是否是回文
-//        if self[left] != self[right] { return nil }
-//        var tempLeft = left
-//        var tempRight = right
-//        
-//        while tempLeft >= 0, tempRight <= self.count - 1 {
-//            if self[tempLeft] == self[tempRight] {
-//                if tempLeft == 0 || tempRight == self.count - 1 {
-//                    break
-//                } else {
-//                    tempLeft -= 1
-//                    tempRight += 1
-//                }
-//            } else {
-//                tempLeft += 1
-//                tempRight -= 1
-//                break
-//            }
+//    func reverseKGroup(_ head: ListNode?, _ k: Int) -> ListNode? {
+//        return repeats(head, k: k, before: nil);
+//    }
+//    
+//    func repeats(_ node: ListNode?, k: Int, before: ListNode?) -> ListNode? {
+//        if node == nil { return nil }
+//        before?.next = nil
+//        var temp = node
+//        var times = k
+//        while temp != nil && times - 1 != 0 {
+//            times -= 1
+//            temp = temp?.next
 //        }
-//        return (tempLeft, tempRight - tempLeft + 1)
+//        if temp == nil {
+//            before?.next = node
+//            return nil
+//        } else {
+//            let after = temp?.next
+//            temp?.next = nil
+//            let reversed = node?.reverse()
+//            before?.next = reversed
+//            node?.next = after
+//            _ = repeats(after, k: k, before: node)
+//            return before == nil ? reversed : nil
+//        }
 //    }
-//    
-//    func string(begin: Int, offSet: Int) -> String {
-//        return self[begin..<begin + offSet].joined()
-//    }
-//    
 //}
 
